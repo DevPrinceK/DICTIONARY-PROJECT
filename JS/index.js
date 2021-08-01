@@ -1,6 +1,7 @@
 // Adding event listener to the search button
 document.getElementById('search-btn').addEventListener("click", fetchWord);
 
+// interim handler for the audio pronunciation functionality
 document.getElementById('phono-audio').addEventListener("click", fetchWord);
 
 //
@@ -25,6 +26,7 @@ async function fetchWord(event) {
 
     } else {
         display("No word entered");
+        getAudio("https://lex-audio.useremarkable.com/mp3/example_us_1.mp3");
     };
 
 
@@ -48,10 +50,9 @@ function getDefinitions(data) {
     let phonoText = data[0].phonetics[0].text; // TODO
 
     // AUDIO PHONETICS / pronunciation
-    // let phonoAudio = data[0].phonetics[0].audio;
     let phonoAudio = data[0].phonetics[0].audio;
 
-    let audioFile = phonoAudio;
+    //let audioFile = phonoAudio;
 
     // NOTE DEFINITIONS ARE HERE!
     let definitions = testDefines.map(item => item.map(item => item.definition));
