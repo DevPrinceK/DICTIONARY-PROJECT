@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAP STYLING -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- CUSTOM STYLING -->
+    <link rel="stylesheet" href="/CSS/style.css">
+
+    <!-- TITLE BAR LOGO -->
+    <link rel="shortcut icon" href="/IMAGES/kps-logo.png">
+
+
+    <!-- PAGE TITLE -->
+    <title>KPS | WordFarm</title>
+</head>
+
+<body onpageshow="fetchWord()">
+    <!-- MAIN HEADER  -->
+    <header id="main-header" class="container-fluit bg-dark">
+        <h1 class="text-white">KPS</h1>
+        <p class="lead text-white">WordFarm</p>
+    </header>
+
+    <!-- MAIN CONTENT || WHERE RESULTS ARE DISPLAYED -->
+    <main class="container" id="form-main">
+        <!-- SEARCH BUTTON -->
+        <form class="form">
+            <input id="input-word" class="form-control" type="text" placeholder="Enter word...">
+            <button id="search-btn" class="btn btn-outline-primary">Search</button>
+        </form>
+    </main>
+
+    <main class="container" id="result-main">
+        <div class="card">
+            <div class="card-body">
+                <!-- WORD -->
+                <div class="card-title header" id="word-title-container">WORD</div>
+                <div class="card-text" id="main-word">
+                    Example
+                </div>
+                <br>
+                <!-- WORD CLASS -->
+                <div class="card-subtitle text-muted header" id="word-class-container">Word Class</div>
+                <div class="card-text" id="word-class">Noun</div>
+                <br>
+
+                <!-- DEFINITIONS -->
+                <div class="card-subtitle text-muted header" id="definition-container">Definitions</div>
+                <div class="card-text" id="definitions">
+                    <ul class="list-group">
+                        <li class="list-group-item">a representative form or pattern</li>
+                        <li class="list-group-item">something to be imitated</li>
+                        <li class="list-group-item">an occurrence of something</li>
+                        <li class="list-group-item">an item of information that is typical of a class or group</li>
+                    </ul>
+                </div>
+                <br>
+
+                <!-- SYNONYMS -->
+                <div class="card-subtitle text-muted header" id="synonym-container">SYNONYMS</div>
+                <div class="card-text" id="synonym">
+                    <ul>
+                        <li>model</li>
+                        <li>exemplar</li>
+                        <li>good example</li>
+                        <li>instance</li>
+                        <li>case</li>
+                        <li>illustration</li>
+                        <li>representative</li>
+                        <li>lesson</li>
+                        <li>object lesson</li>
+                        <li>deterrent example</li>
+                        <li>exercise</li>
+                    </ul>
+                </div>
+                <br>
+                <!-- SYLLABLES -->
+                <div class="card-subtitle text-muted header" id="syllables-container">SYLLABLES</div>
+                <div class="card-text" id="syllables-count">3</div>
+                <div class="card-text" id="syllables-text">
+                    <ul>
+                        <li>ex</li>
+                        <li>am</li>
+                        <li>ple</li>
+                    </ul>
+                </div>
+                <br>
+                <!-- PRONUNCIATION -->
+                <div class="card-subtitle text-muted header" id="pronunciation-container">PRONUNCIATION</div>
+                <div class="card-text" id="pronunciation">
+                    <ul>
+                        <li>ɪɡ'zæmpəl</li>
+                    </ul>
+                </div>
+                <br>
+            </div>
+        </div>
+        <br>
+    </main>
+    <footer class="container-fluid bg-dark text-white">
+        <div id="main-footer-container" class="container">
+            <div class="container">
+                <span class="text-info">Try Our Other Systems</span>
+                <br>
+                <a href="https://covid-alert.netlify.app/" target="_blank">Covid Tracker</a>
+                <br>
+                <a href="https://kps-inspire.netlify.app/" target="_blank">Inspiration Hub</a>
+                <br>
+                <a href="https://todo-maker.netlify.app/" target="_blank">ToDo Maker</a>
+                <br>
+                <a href="https://mtv-project.netlify.app" target="_blank">MTV Channel</a>
+                <br>
+                <a href="https://e-library-205.000webhostapp.com/" target="_blank">E-Library System (Still in
+                    Development)</a>
+            </div>
+            <br>
+            <div class="container">
+                <span class="text-info">CopyRight!</span>
+                <br>
+                <span class="text-primary">KPS Technology 2021</span>
+            </div>
+            <br>
+            <div class="container">
+                <span class="text-info"> Contact the developer</span>
+                <br>
+                <a href="tel:+233558366133">+233558366133</a>
+            </div>
+
+
+        </div>
+    </footer>
+    <script src="/JS/index.js"></script>
+</body>
+
+</html>

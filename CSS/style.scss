@@ -1,0 +1,89 @@
+// imports
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+// Mixins
+@mixin flex($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  @include flex(center, center, column);
+  padding: 20px 0;
+  margin-bottom: 20px;
+
+  h1 {
+    font-family: "Big Shoulders Display", cursive;
+    font-size: 55px;
+    font-weight: 700;
+    letter-spacing: 13px;
+  }
+
+  p {
+    margin-top: -20px;
+    margin-left: -15px;
+  }
+}
+
+form {
+  @include flex(center, center, row);
+  margin-bottom: 20px;
+
+  input {
+    width: 60%;
+  }
+}
+
+.header {
+  background-color: #abc;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+footer {
+  @include flex(center, center, column);
+  height: 200px;
+
+  #main-footer-container {
+    @include flex(center, center, row);
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+// tables
+@media screen and (max-width: 785px) {
+  footer {
+    height: fit-content;
+
+    #main-footer-container {
+      margin: 30px 0;
+    }
+  }
+}
+
+// mobile devices screen size
+@media screen and (max-width: 650px) {
+  footer {
+    @include flex(center, center, column);
+    height: fit-content;
+  }
+  footer #main-footer-container {
+    @include flex(center, center, column);
+    margin: 30px 0;
+    width: 100%;
+  }
+  footer a {
+    text-decoration: none;
+  }
+}

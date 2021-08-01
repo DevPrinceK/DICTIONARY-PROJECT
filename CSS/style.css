@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-family: "Big Shoulders Display", cursive;
+  font-size: 55px;
+  font-weight: 700;
+  letter-spacing: 13px;
+}
+
+header p {
+  margin-top: -20px;
+  margin-left: -15px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+form input {
+  width: 60%;
+}
+
+.header {
+  background-color: #abc;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 200px;
+}
+
+footer #main-footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 785px) {
+  footer {
+    height: fit-content;
+  }
+  footer #main-footer-container {
+    margin: 30px 0;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: fit-content;
+  }
+  footer #main-footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 30px 0;
+    width: 100%;
+  }
+  footer a {
+    text-decoration: none;
+  }
+}
