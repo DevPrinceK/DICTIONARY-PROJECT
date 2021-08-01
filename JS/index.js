@@ -15,9 +15,10 @@ async function fetchWord(event) {
         let wordData = await wordJunk.json();
 
         // testing for the extraction of the definitions
-        testDefinitions(wordData);
+        //testFunction(wordData);
 
-        //getDefinitions(wordData);
+        // NOTE NOTE NOTE
+        getDefinitions(wordData);
 
     } else {
         display("No word entered");
@@ -26,12 +27,10 @@ async function fetchWord(event) {
 
 };
 
-// // get definitions || Arrow function
-// const getDefinitions = (data) => data.map((item) => item.meanings).map((sub - item) => sub - item.definitions).map((item) => item.meanings);
-
 // get definitions
 function getDefinitions(data) {
-    let arrayOfDefinitons = [];
+    let arrayOfDefinitons = []; // to store all definitions
+
     let meanings = data[0].meanings;
     let testDefines = meanings.map(item => item.definitions);
 
@@ -44,9 +43,45 @@ function getDefinitions(data) {
         }
     }
 
+    display(arrayOfDefinitons);
+
+    // calls the function to render the definitions on the page
+    testFunction(arrayOfDefinitons);
 };
 
 
-function testDefinitions(data) {
+
+// for testing the extraction of useful data
+function testFunction(data) {
+    // document.getElementById('definitions').innerHTML = `
+    //      <ul class="list-group">
+    //      ${data.map(function(definition){
+    //          return ` <li class="list-group-item">${definition}</li>`
+    //      }).join("")}
+    //     </ul>
+    // `
+
+    // TRIAL 2 // NOTE
+    document.getElementById('definitions').innerHTML = `
+    <ul class="list-group">${data.map(item => `<li class="list-group-item">${item}</li>`)}</ul>
+    `
+
+    // // TRIAL 3 // NOTE
+    // document.getElementById('definitions').innerHTML = `
+    //     <select onchange="getOtData(this.value)">
+    //         <option selected>Choose A Country</option>
+    //         ${data.map(function(definition){
+    //         return `<option>${definition}</option>`
+    //         }).join("")}
+    //     </select>
+    //     `
+
+
+    // test
+    display(data);
 
 }
+
+
+
+const display = (item) => console.log(item);
