@@ -14,16 +14,10 @@ async function fetchWord(event) {
         // convert promise to json
         let wordData = await wordJunk.json();
 
-        // call the get definitions function
-        //getDefinitions(wordData); // NOTE
-
+        // testing for the extraction of the definitions
         testDefinitions(wordData);
 
-        // // displaying fetched data
-        // display(typeof wordData[0].meanings);
-
-        // // display content
-        // display(wordData[0].meanings[0].definitions[0].definition);
+        //getDefinitions(wordData);
 
     } else {
         display("No word entered");
@@ -37,25 +31,22 @@ async function fetchWord(event) {
 
 // get definitions
 function getDefinitions(data) {
-    let definitons = data.map((item) => item.meanings).map((member) => member.definitions).map((word) => word.definition);
+    let arrayOfDefinitons = [];
+    let meanings = data[0].meanings;
+    let testDefines = meanings.map(item => item.definitions);
 
-    // display definitions
-    display(definitons);
+    let definitions = testDefines.map(item => item.map(item => item.definition)); // NOTE DEFINITIONS ARE HERE!
+
+    // Looping through the multi-dimensional array to create a 1-d array of definitions
+    for (let i = 0; i < definitions.length; i++) {
+        for (let j = 0; j < definitions[i].length; j++) {
+            arrayOfDefinitons.push(definitions[i][j]);
+        }
+    }
+
 };
 
 
 function testDefinitions(data) {
-    let testDefines = data.map(member => member.meanings);
 
-    // let testDefines2 = testDefines.map(item => item[0].definitions);
-    let testDefines2 = testDefines.map(item => item.map(member => member.definitions));
-
-    let actualDefinitions = testDefines2.map(word => word.map(item => item.definition));
-
-    display(testDefines);
-    display(testDefines2);
-    display(actualDefinitions);
 }
-
-// function to display items === for debugging
-const display = (item) => console.log(item);
