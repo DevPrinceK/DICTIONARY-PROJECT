@@ -1,6 +1,10 @@
 // Adding event listener to the search button
 document.getElementById('search-btn').addEventListener("click", fetchWord);
 
+//
+var audioFile;
+
+
 // fetch the data
 async function fetchWord(event) {
     event.preventDefault();
@@ -24,6 +28,7 @@ async function fetchWord(event) {
 
 };
 
+
 // get definitions || also calls other helper functions
 function getDefinitions(data) {
     let arrayOfDefinitons = []; // to store all definitions
@@ -38,7 +43,13 @@ function getDefinitions(data) {
     let wordClass = meanings.map(item => item.partOfSpeech);
 
     // contains data on the phonetics of the word
-    let phonoText = data[0].phonetics[0].text // TODO
+    let phonoText = data[0].phonetics[0].text; // TODO
+
+    // AUDIO PHONETICS / pronunciation
+    // let phonoAudio = data[0].phonetics[0].audio;
+    let phonoAudio = data[0].phonetics[0].audio;
+
+    let audioFile = phonoAudio;
 
     // NOTE DEFINITIONS ARE HERE!
     let definitions = testDefines.map(item => item.map(item => item.definition));
@@ -50,8 +61,6 @@ function getDefinitions(data) {
         }
     }));
 
-    display(`SYNONYMS ==> ${synonyms}`); // NOTE
-
     // Looping through the multi-dimensional array to create a 1-d array of synonyms
     for (let i = 0; i < synonyms.length; i++) {
         for (let j = 0; j < synonyms[i].length; j++) {
@@ -60,9 +69,6 @@ function getDefinitions(data) {
             }
         }
     }
-
-
-
 
     // Looping through the multi-dimensional array to create a 1-d array of definitions
     for (let i = 0; i < definitions.length; i++) {
@@ -90,6 +96,8 @@ function getDefinitions(data) {
     // render synonyms
     renderSynonyms(arrayOfSynonyms);
 
+    // plays the audio pronunciation of the word
+    getAudio(phonoAudio);
 
 };
 
@@ -125,17 +133,23 @@ function renderSynonyms(synonyms) {
     `
 }
 
-
-
-
-
-
 // get the phonetics
 function getPhonetics(phonoText) {
     document.getElementById('phonoText').innerHTML = phonoText;
 }
 
-// 
+// when audio button is clicked
+document.getElementById('phono-audio').addEventListener("click", getAudio(audioFile));
+
+// get audio pronunciation
+function getAudio(phonoAudio) {
+    let audio = new Audio(phonoAudio);
+    // plays audio
+    audio.play();
+
+    // resets audio time so it can be replayed when needed
+    audio.currentTime = 0;
+}
 
 
 const display = (item) => console.log(item);
