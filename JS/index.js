@@ -28,6 +28,8 @@ async function fetchWord(event) {
 function getDefinitions(data) {
     let arrayOfDefinitons = []; // to store all definitions
 
+    let arrayOfSynonyms = []; // to store all synonyms
+
     // contains data on meanings of the word
     let meanings = data[0].meanings;
     let testDefines = meanings.map(item => item.definitions);
@@ -35,12 +37,32 @@ function getDefinitions(data) {
     // extracts the word class || part of speach
     let wordClass = meanings.map(item => item.partOfSpeech);
 
-
-
     // contains data on the phonetics of the word
     let phonoText = data[0].phonetics[0].text // TODO
 
-    let definitions = testDefines.map(item => item.map(item => item.definition)); // NOTE DEFINITIONS ARE HERE!
+    // NOTE DEFINITIONS ARE HERE!
+    let definitions = testDefines.map(item => item.map(item => item.definition));
+
+    // // extracts the synonyms if any
+    let synonyms = testDefines.map(item => item.map(function (item) {
+        if (item.hasOwnProperty("synonyms")) {
+            return [item.synonyms];
+        }
+    }));
+
+    display(`SYNONYMS ==> ${synonyms}`); // NOTE
+
+    // Looping through the multi-dimensional array to create a 1-d array of synonyms
+    for (let i = 0; i < synonyms.length; i++) {
+        for (let j = 0; j < synonyms[i].length; j++) {
+            if (synonyms[i][j] !== undefined) {
+                arrayOfSynonyms.push(synonyms[i][j]);
+            }
+        }
+    }
+
+
+
 
     // Looping through the multi-dimensional array to create a 1-d array of definitions
     for (let i = 0; i < definitions.length; i++) {
@@ -65,6 +87,9 @@ function getDefinitions(data) {
     // renders the word class
     renderWordClass(wordClass);
 
+    // render synonyms
+    renderSynonyms(arrayOfSynonyms);
+
 
 };
 
@@ -82,7 +107,7 @@ function renderDefinitions(data) {
     `
 }
 
-
+// renders the part of speach of the word
 function renderWordClass(wordClass) {
     // Loops through the array and creates an html element for each item in the array
     // making it positble to be rendered on the page
@@ -90,6 +115,18 @@ function renderWordClass(wordClass) {
     <ul class="list-group">${wordClass.map(item => `<li class="list-group-item">${item}</li>`)}</ul>
     `
 }
+
+//
+function renderSynonyms(synonyms) {
+    // Loops through the array and creates an html element for each item in the array
+    // making it positble to be rendered on the page
+    document.getElementById('synonym').innerHTML = `
+    <ul class="list-group">${synonyms.map(item => `<li class="list-group-item">${item}</li>`)}</ul>
+    `
+}
+
+
+
 
 
 

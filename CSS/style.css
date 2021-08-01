@@ -63,6 +63,12 @@ form input {
   margin-left: 15px;
 }
 
+#synonym-container,
+#definition-container,
+#word-class-container {
+  margin-bottom: 5px;
+}
+
 .header {
   background-color: #abc;
   padding: 10px 15px;
