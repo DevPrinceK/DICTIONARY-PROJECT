@@ -24,13 +24,18 @@ async function fetchWord(event) {
 
 };
 
-// get definitions
+// get definitions || also calls other helper functions
 function getDefinitions(data) {
     let arrayOfDefinitons = []; // to store all definitions
 
     // contains data on meanings of the word
     let meanings = data[0].meanings;
     let testDefines = meanings.map(item => item.definitions);
+
+    // extracts the word class || part of speach
+    let wordClass = meanings.map(item => item.partOfSpeech);
+
+
 
     // contains data on the phonetics of the word
     let phonoText = data[0].phonetics[0].text // TODO
@@ -44,6 +49,10 @@ function getDefinitions(data) {
         }
     }
 
+
+    //NOTE HELPER FUNCTIONS
+    //NOTE HELPER FUNCTIONS
+
     // calls the function to render the definitions on the page
     renderDefinitions(arrayOfDefinitons);
 
@@ -52,6 +61,11 @@ function getDefinitions(data) {
 
     // renders the searched word in question
     renderWord(data[0].word);
+
+    // renders the word class
+    renderWordClass(wordClass);
+
+
 };
 
 // render main word on page
@@ -66,8 +80,17 @@ function renderDefinitions(data) {
     document.getElementById('definitions').innerHTML = `
     <ul class="list-group">${data.map(item => `<li class="list-group-item">${item}</li>`)}</ul>
     `
-
 }
+
+
+function renderWordClass(wordClass) {
+    // Loops through the array and creates an html element for each item in the array
+    // making it positble to be rendered on the page
+    document.getElementById('word-class').innerHTML = `
+    <ul class="list-group">${wordClass.map(item => `<li class="list-group-item">${item}</li>`)}</ul>
+    `
+}
+
 
 
 // get the phonetics
