@@ -1,31 +1,35 @@
 [{
-    "word": "hello",
+    "word": "name",
     "phonetics": [{
-        "text": "/həˈloʊ/",
-        "audio": "https://lex-audio.useremarkable.com/mp3/hello_us_1_rr.mp3"
-    }, {
-        "text": "/hɛˈloʊ/",
-        "audio": "https://lex-audio.useremarkable.com/mp3/hello_us_2_rr.mp3"
+        "text": "/neɪm/",
+        "audio": "https://lex-audio.useremarkable.com/mp3/name_us_1.mp3"
     }],
     "meanings": [{
+        "partOfSpeech": "transitive verb",
+        "definitions": [{
+            "definition": "Give a name to.",
+            "synonyms": ["called", "by the name of", "baptized", "christened", "known as", "under the name of"],
+            "example": "hundreds of diseases had not yet been isolated or named"
+        }, {
+            "definition": "Specify (an amount, time, or place) as something desired, suggested, or decided on.",
+            "example": "he showed them the picture and named a price"
+        }]
+    }, {
         "partOfSpeech": "noun",
         "definitions": [{
-            "definition": "An utterance of “hello”; a greeting.",
-            "synonyms": ["greeting", "welcome", "salutation", "saluting", "hailing", "address", "hello", "hallo"],
-            "example": "she was getting polite nods and hellos from people"
+            "definition": "A word or set of words by which a person, animal, place, or thing is known, addressed, or referred to.",
+            "synonyms": ["title", "denomination", "designation", "honorific", "tag", "epithet", "label"],
+            "example": "my name is Parsons, John Parsons"
+        }, {
+            "definition": "A famous person.",
+            "synonyms": ["celebrity", "star", "superstar", "VIP", "famous person", "important person", "leading light", "celebutante", "big name", "luminary", "mogul", "person of note", "dignitary", "personage", "worthy"],
+            "example": "as usual, the big race will lure the top names"
         }]
     }, {
-        "partOfSpeech": "intransitive verb",
+        "partOfSpeech": "adjective",
         "definitions": [{
-            "definition": "Say or shout “hello”; greet someone.",
-            "example": "I pressed the phone button and helloed"
-        }]
-    }, {
-        "partOfSpeech": "exclamation",
-        "definitions": [{
-            "definition": "Used as a greeting or to begin a phone conversation.",
-            "example": "hello there, Katie!"
+            "definition": "(of a person or commercial product) having a name that is widely known.",
+            "example": "countless specialized name brands geared to niche markets"
         }]
     }]
-}
-]
+}]
