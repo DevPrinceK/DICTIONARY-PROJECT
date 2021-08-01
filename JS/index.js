@@ -1,6 +1,8 @@
 // Adding event listener to the search button
 document.getElementById('search-btn').addEventListener("click", fetchWord);
 
+document.getElementById('phono-audio').addEventListener("click", fetchWord);
+
 //
 var audioFile;
 
