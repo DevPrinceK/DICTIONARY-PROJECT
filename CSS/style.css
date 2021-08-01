@@ -39,10 +39,57 @@ form input {
   width: 60%;
 }
 
+#main-word-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+#main-word-div #main-word {
+  margin-left: 15px;
+  margin-top: -10px;
+}
+
+#main-word-div button {
+  border: 2px solid #abc;
+}
+
+#main-word-div button:active {
+  background-color: #abc;
+}
+
+#word-class {
+  margin-left: 15px;
+}
+
 .header {
   background-color: #abc;
   padding: 10px 15px;
   border-radius: 10px;
+}
+
+#syllables-count {
+  margin-left: 15px;
+}
+
+#pronunciation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+#pronunciation ul {
+  margin-top: 10px;
+}
+
+#pronunciation button {
+  border: 2px solid #abc;
+}
+
+#pronunciation button:active {
+  background-color: #abc;
 }
 
 footer {

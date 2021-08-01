@@ -14,9 +14,6 @@ async function fetchWord(event) {
         // convert promise to json
         let wordData = await wordJunk.json();
 
-        // testing for the extraction of the definitions
-        //testFunction(wordData);
-
         // NOTE NOTE NOTE
         getDefinitions(wordData);
 
@@ -52,8 +49,15 @@ function getDefinitions(data) {
 
     // renders the phonetics on the page
     getPhonetics(phonoText);
+
+    // renders the searched word in question
+    renderWord(data[0].word);
 };
 
+// render main word on page
+function renderWord(word) {
+    document.getElementById('main-word').innerHTML = word;
+};
 
 // Takes the Array of definitions and renders it on the page
 function renderDefinitions(data) {
@@ -70,6 +74,8 @@ function renderDefinitions(data) {
 function getPhonetics(phonoText) {
     document.getElementById('phonoText').innerHTML = phonoText;
 }
+
+// 
 
 
 const display = (item) => console.log(item);

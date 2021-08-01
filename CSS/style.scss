@@ -43,10 +43,48 @@ form {
   }
 }
 
+#main-word-div {
+  @include flex(space-between, center, row);
+
+  #main-word {
+    margin-left: 15px;
+    margin-top: -10px;
+  }
+
+  button {
+    border: 2px solid #abc;
+    &:active {
+      background-color: #abc;
+    }
+  }
+}
+
+#word-class {
+  margin-left: 15px;
+}
+
 .header {
   background-color: #abc;
   padding: 10px 15px;
   border-radius: 10px;
+}
+
+#syllables-count {
+  margin-left: 15px;
+}
+
+#pronunciation {
+  @include flex(space-between, center, row);
+
+  ul {
+    margin-top: 10px;
+  }
+  button {
+    border: 2px solid #abc;
+    &:active {
+      background-color: #abc;
+    }
+  }
 }
 
 footer {
