@@ -4,6 +4,9 @@ document.getElementById('search-btn').addEventListener("click", fetchWord);
 // interim handler for the audio pronunciation functionality
 document.getElementById('phono-audio').addEventListener("click", fetchWord);
 
+// set favourite word
+document.getElementById('fav-btn').addEventListener("click", setFavourite);
+
 //
 var audioFile;
 
@@ -154,5 +157,19 @@ function getAudio(phonoAudio) {
     audio.currentTime = 0;
 }
 
+// set favourite words
+function setFavourite() {
+    let date = new Date.now();
+    document.getElementById('main-word').textContent;
+
+    // storing the favourite word in a  local storage
+    localStorage.setItem(date, document.getElementById('main-word').textContent);
+
+}
+
+
+function renderFavourite() {
+    //
+}
 
 const display = (item) => console.log(item);
