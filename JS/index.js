@@ -31,8 +31,12 @@ async function fetchWord(event) {
 function getDefinitions(data) {
     let arrayOfDefinitons = []; // to store all definitions
 
+    // contains data on meanings of the word
     let meanings = data[0].meanings;
     let testDefines = meanings.map(item => item.definitions);
+
+    // contains data on the phonetics of the word
+    let phonoText = data[0].phonetics[0].text // TODO
 
     let definitions = testDefines.map(item => item.map(item => item.definition)); // NOTE DEFINITIONS ARE HERE!
 
@@ -43,45 +47,29 @@ function getDefinitions(data) {
         }
     }
 
-    display(arrayOfDefinitons);
-
     // calls the function to render the definitions on the page
-    testFunction(arrayOfDefinitons);
+    renderDefinitions(arrayOfDefinitons);
+
+    // renders the phonetics on the page
+    getPhonetics(phonoText);
 };
 
 
-
-// for testing the extraction of useful data
-function testFunction(data) {
-    // document.getElementById('definitions').innerHTML = `
-    //      <ul class="list-group">
-    //      ${data.map(function(definition){
-    //          return ` <li class="list-group-item">${definition}</li>`
-    //      }).join("")}
-    //     </ul>
-    // `
-
-    // TRIAL 2 // NOTE
+// Takes the Array of definitions and renders it on the page
+function renderDefinitions(data) {
+    // Loops through the array and creates an html element for each item in the array
+    // making it positble to be rendered on the page
     document.getElementById('definitions').innerHTML = `
     <ul class="list-group">${data.map(item => `<li class="list-group-item">${item}</li>`)}</ul>
     `
 
-    // // TRIAL 3 // NOTE
-    // document.getElementById('definitions').innerHTML = `
-    //     <select onchange="getOtData(this.value)">
-    //         <option selected>Choose A Country</option>
-    //         ${data.map(function(definition){
-    //         return `<option>${definition}</option>`
-    //         }).join("")}
-    //     </select>
-    //     `
-
-
-    // test
-    display(data);
-
 }
 
+
+// get the phonetics
+function getPhonetics(phonoText) {
+    document.getElementById('phonoText').innerHTML = phonoText;
+}
 
 
 const display = (item) => console.log(item);
