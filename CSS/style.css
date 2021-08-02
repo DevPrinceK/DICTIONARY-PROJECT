@@ -72,7 +72,7 @@ form input {
 .header {
   background-color: #abc;
   padding: 10px 15px;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 #syllables-count {

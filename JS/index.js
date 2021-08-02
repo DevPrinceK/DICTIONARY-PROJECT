@@ -18,17 +18,15 @@ async function fetchWord(event) {
 
     // wrapping the fetch inside a try-except block to catch invalid words
     try {
-        console.log("Fetch function is running");
         // fecthes data on speficied word
         let word = document.getElementById('input-word').value;
         if (word !== "") {
-            console.log(`This is the entered word as returned by fnx: ${word}`);
             let wordJunk = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en_US/${word}`);
 
             // convert promise to json
             let wordData = await wordJunk.json();
 
-            // NOTE NOTE NOTE
+            // gets all definitions and calls other helper functions
             getDefinitions(wordData);
 
         } else {
@@ -37,7 +35,6 @@ async function fetchWord(event) {
         };
 
     } catch (error) {
-        console.log(error.name);
         // IF WORD IS NOT FOUND
         if (error.name == "TypeError") {
             let notApplicable = "Not Applicable";
@@ -149,7 +146,7 @@ function renderWordClass(wordClass) {
     `
 }
 
-//
+// renders the synonyms of the searched word onto the screen
 function renderSynonyms(synonyms) {
     // Loops through the array and creates an html element for each item in the array
     // making it positble to be rendered on the page
