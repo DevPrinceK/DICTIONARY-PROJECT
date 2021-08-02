@@ -13,24 +13,43 @@ var audioFile;
 
 // fetch the data
 async function fetchWord(event) {
+    // preventing the default button event
     event.preventDefault();
-    console.log("Fetch function is running");
-    // fecthes data on speficied word
-    let word = document.getElementById('input-word').value;
-    if (word !== "") {
-        console.log(`This is the entered word as returned by fnx: ${word}`);
-        let wordJunk = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en_US/${word}`);
 
-        // convert promise to json
-        let wordData = await wordJunk.json();
+    // wrapping the fetch inside a try-except block to catch invalid words
+    try {
+        console.log("Fetch function is running");
+        // fecthes data on speficied word
+        let word = document.getElementById('input-word').value;
+        if (word !== "") {
+            console.log(`This is the entered word as returned by fnx: ${word}`);
+            let wordJunk = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en_US/${word}`);
 
-        // NOTE NOTE NOTE
-        getDefinitions(wordData);
+            // convert promise to json
+            let wordData = await wordJunk.json();
 
-    } else {
-        display("No word entered");
-        getAudio("https://lex-audio.useremarkable.com/mp3/example_us_1.mp3");
-    };
+            // NOTE NOTE NOTE
+            getDefinitions(wordData);
+
+        } else {
+            display("No word entered");
+            getAudio("https://lex-audio.useremarkable.com/mp3/example_us_1.mp3");
+        };
+
+    } catch (error) {
+        console.log(error.name);
+        // IF WORD IS NOT FOUND
+        if (error.name == "TypeError") {
+            let notApplicable = "Not Applicable";
+            let word = document.getElementById('input-word').value;
+            document.getElementById('main-word').innerHTML = word;
+            document.getElementById('word-class').innerHTML = notApplicable;
+            document.getElementById('synonym').innerHTML = notApplicable;
+            document.getElementById('phonoText').innerHTML = notApplicable;
+            document.getElementById('definitions').innerHTML = notApplicable;
+            alert(`Sorry! ${word} not found! Try another word`);
+        }
+    }
 
 
 };
