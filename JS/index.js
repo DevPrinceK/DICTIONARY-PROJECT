@@ -58,6 +58,8 @@ function getDefinitions(data) {
 
     let arrayOfSynonyms = []; // to store all synonyms
 
+    let arrayOfUsage = []; // to store usages of the word //NOTE TODO
+
     // contains data on meanings of the word
     let meanings = data[0].meanings;
     let testDefines = meanings.map(item => item.definitions);
@@ -83,6 +85,16 @@ function getDefinitions(data) {
         }
     }));
 
+
+    // // extracts the usages if any
+    let usages = testDefines.map(item => item.map(function (item) {
+        if (item.hasOwnProperty("example")) {
+            return [item.example];
+        }
+    }));
+
+
+
     // Looping through the multi-dimensional array to create a 1-d array of synonyms
     for (let i = 0; i < synonyms.length; i++) {
         for (let j = 0; j < synonyms[i].length; j++) {
@@ -91,6 +103,17 @@ function getDefinitions(data) {
             }
         }
     }
+
+
+    // Looping through the multi-dimensional array to create a 1-d array of usages
+    for (let i = 0; i < usages.length; i++) {
+        for (let j = 0; j < usages[i].length; j++) {
+            if (usages[i][j] !== undefined) {
+                arrayOfUsage.push(usages[i][j]);
+            }
+        }
+    }
+
 
     // Looping through the multi-dimensional array to create a 1-d array of definitions
     for (let i = 0; i < definitions.length; i++) {
@@ -117,6 +140,9 @@ function getDefinitions(data) {
 
     // render synonyms
     renderSynonyms(arrayOfSynonyms);
+
+    // render usages
+    renderUsages(arrayOfUsage);
 
     // plays the audio pronunciation of the word
     getAudio(phonoAudio);
@@ -154,6 +180,16 @@ function renderSynonyms(synonyms) {
     <ul class="list-group">${synonyms.map(item => `<li class="list-group-item">${item}</li>`)}</ul>
     `
 }
+
+// Takes the Array of usages and renders it on the page
+function renderUsages(usage) {
+    // Loops through the array and creates an html element for each item in the array
+    // making it positble to be rendered on the page
+    document.getElementById('usage-text').innerHTML = `
+    <ul class="list-group">${usage.map(item => `<li class="list-group-item">${item}</li>`)}</ul>
+    `
+}
+
 
 // get the phonetics
 function getPhonetics(phonoText) {
