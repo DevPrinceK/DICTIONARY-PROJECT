@@ -48,7 +48,6 @@ async function fetchWord(event) {
         }
     }
 
-
 };
 
 
@@ -85,15 +84,12 @@ function getDefinitions(data) {
         }
     }));
 
-
     // // extracts the usages if any
     let usages = testDefines.map(item => item.map(function (item) {
         if (item.hasOwnProperty("example")) {
             return [item.example];
         }
     }));
-
-
 
     // Looping through the multi-dimensional array to create a 1-d array of synonyms
     for (let i = 0; i < synonyms.length; i++) {
@@ -104,7 +100,6 @@ function getDefinitions(data) {
         }
     }
 
-
     // Looping through the multi-dimensional array to create a 1-d array of usages
     for (let i = 0; i < usages.length; i++) {
         for (let j = 0; j < usages[i].length; j++) {
@@ -114,7 +109,6 @@ function getDefinitions(data) {
         }
     }
 
-
     // Looping through the multi-dimensional array to create a 1-d array of definitions
     for (let i = 0; i < definitions.length; i++) {
         for (let j = 0; j < definitions[i].length; j++) {
@@ -122,10 +116,7 @@ function getDefinitions(data) {
         }
     }
 
-
     //NOTE HELPER FUNCTIONS
-    //NOTE HELPER FUNCTIONS
-
     // calls the function to render the definitions on the page
     renderDefinitions(arrayOfDefinitons);
 
@@ -148,6 +139,8 @@ function getDefinitions(data) {
     getAudio(phonoAudio);
 
 };
+// NOTE END OF getDefinitions(data)
+
 
 // render main word on page
 function renderWord(word) {
@@ -190,7 +183,6 @@ function renderUsages(usage) {
     `
 }
 
-
 // get the phonetics
 function getPhonetics(phonoText) {
     document.getElementById('phonoText').innerHTML = phonoText;
@@ -209,7 +201,7 @@ function getAudio(phonoAudio) {
     audio.currentTime = 0;
 }
 
-// set favourite words
+// TODO TODO TODO set favourite words
 function setFavourite() {
     let date = new Date.now();
     document.getElementById('main-word').textContent;
